@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Shell.NavBarIsVisible="False"
+             x:Class="test.Views.BookPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout BackgroundColor="#495E57" Grid.Row="0">
+            <Label Text="Активні подорожі" TextColor="#F5F7F8" HorizontalTextAlignment="Start" Padding="10" FontSize="20"/>
+        </StackLayout>
+
+        <ScrollView Grid.Row="1">
+            <CollectionView x:Name="suites" ItemsSource="{Binding}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Margin="5,5,5,5">
+                            <Frame BorderColor="#495E57" Padding="5"  Margin="5,5,5,0">
+                                <StackLayout Orientation="Vertical" Margin="0,10,5,5">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Ім'я:" TextColor="#495E57"/>
+                                        <Label Text="{Binding NameUser}" TextColor="#495E57" Margin="0,0,10,0"/>
+                                        <Label Text="Прізвище:" TextColor="#495E57"/>
+                                        <Label Text="{Binding Secondname}" TextColor="#495E57"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Назва житла:" TextColor="#495E57"/>
+                                        <Label Text="{Binding Name}" TextColor="#495E57"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Адреса:" TextColor="#495E57"/>
+                                        <Label Text="{Binding Address}" TextColor="#495E57"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Дата заїзду:" TextColor="#495E57"/>
+                                        <Label Text="{Binding StartDate}" TextColor="#495E57" Margin="0,0,10,0"/>
+                                        <Label Text="Дата виїзду:" TextColor="#495E57"/>
+                                        <Label Text="{Binding EndDate}" TextColor="#495E57"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Ціна:" TextColor="#495E57"/>
+                                        <Label Text="{Binding Price}" TextColor="#495E57"/>
+                                    </StackLayout>
+                                    <Button Text="Відмінити бронювання" Clicked="Delete" CommandParameter="{Binding ID}"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </Grid>
+</ContentPage>

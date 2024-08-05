@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="test.Views.LoginPage"
+             Shell.NavBarIsVisible="False"
+             >
+    
+    <ContentPage.Content>
+        <StackLayout Padding="10,0,10,0" VerticalOptions="Center" Margin="10, 10">
+            <Label Text="Вхід" FontSize="30" VerticalOptions="Center" TextColor="#495E57"/>
+            <Entry x:Name="login"  Placeholder="Логін" TextColor="#495E57" PlaceholderColor="#495E57"/>
+            <Entry x:Name="password"  Placeholder="Пароль" IsPassword="True" TextColor="#495E57" PlaceholderColor="#495E57"/>
+            <Button VerticalOptions="Center" Text="Увійти" Clicked="CheckLogin"/>
+            <Button VerticalOptions="Center" Text="Зареєструватися" Clicked="SignUpClicked"/>
+            
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

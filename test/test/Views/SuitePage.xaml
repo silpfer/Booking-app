@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="test.Views.SuitePage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="5,0,5,0">
+                <Label Text="{Binding Name}" HorizontalOptions="CenterAndExpand" TextColor="#495E57" FontSize="24"  Margin="0,0,0,5"/>
+                <Image Source="{Binding Img}" Margin="0,0,0,5"/>
+                <Label Text="Час перебування" TextColor="#495E57" FontSize="24"  Margin="0,0,0,5"/>
+                <StackLayout Orientation="Horizontal">
+                    <DatePicker x:Name="fromDate" HorizontalOptions="FillAndExpand" TextColor="#F4CE14" />
+                    <DatePicker  x:Name="toDate" HorizontalOptions="FillAndExpand" TextColor="#F4CE14"/>
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Ціна за добу: " TextColor="#495E57" FontSize="24"  Margin="0,0,0,10"/>
+                    <Label Text="{Binding Price}" TextColor="#F4CE14" FontAttributes="Bold" FontSize="24"  Margin="0,0,0,10"/>
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal" Margin="0,0,0,5">
+                    <Label Text="Розташування: " TextColor="#495E57" FontSize="20"/>
+                    <Label Text="{Binding Sity}" TextColor="#495E57" FontSize="20"  />
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal" Margin="0,0,0,5">
+                    <Label Text="Кількість місць: " TextColor="#495E57" FontSize="20"/>
+                    <Label Text="{Binding Number_guest}" TextColor="#495E57" FontSize="20"/>
+                </StackLayout>
+                
+                <Label Text="{Binding Description}" TextColor="#495E57" FontSize="20"  Margin="0,0,0,5"/>
+                <Button Text="Забронювати" HorizontalOptions="End"  Clicked="Book" Margin="0,0,0,35"/>
+                
+                
+                <Label Text="Коментарі" HorizontalOptions="CenterAndExpand" TextColor="#495E57" FontSize="24"  Margin="0,0,0,5"/>                
+                <Entry x:Name="comm" Placeholder="Залишити коментар" PlaceholderColor="#495E57" TextColor="#495E57"/>
+                <Button Text="Підтвердити" Clicked="AddComment" HorizontalOptions="End"/>
+                <CollectionView x:Name="comments">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Margin="0,0,0,10">
+                                <Label Text="{Binding Name_User}" Margin="5,0,0,0" FontSize="18" FontAttributes="Bold" TextColor="#495E57"/>
+                                <Label Text="{Binding Text}" Margin="10,0,0,0" FontSize="18" TextColor="#495E57"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>            
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

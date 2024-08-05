@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:test.Views"
+       Title="test"
+       x:Class="test.AppShell">
+
+    <!-- Ресурси, які використовуються для стилів елементів Shell -->
+    <Shell.Resources>
+        <ResourceDictionary>
+            <!-- Базовий стиль для елементів Shell -->
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <!-- Встановлення кольорів для елементів Shell -->
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+            </Style>
+
+            <!-- Стиль для панелі вкладок (TabBar) -->
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}"/>
+
+            <!-- Стиль для елементу FlyoutItem, коментаризований -->
+            <!--<Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />-->
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <!-- Контент панелі вкладок -->
+    <TabBar>
+        <!-- Вкладка "Пошук" -->
+        <ShellContent Title="Пошук" Icon="icon_search.png" Route="SearchPage" ContentTemplate="{DataTemplate local:SearchPage}" />
+
+        <!-- Вкладка "Бронювання" -->
+        <ShellContent Title="Бронювання" Icon="icon_book.png" ContentTemplate="{DataTemplate local:BookPage}"></ShellContent>
+
+        <!-- Вкладка "Профіль" -->
+        <ShellContent Title="Профіль" Icon="user.png" ContentTemplate="{DataTemplate local:LoginPage}"></ShellContent>
+    </TabBar>
+
+    <!-- Додаткова вкладка (TabBar) -->
+    <TabBar>
+        <!-- Вміст для сторінки логіну -->
+        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+    </TabBar>
+</Shell>

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:test.Views"
+             Shell.NavBarIsVisible="False"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             x:Class="test.Views.SearchPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout BackgroundColor="#495E57" Grid.Row="0" Padding="10">
+            <Label Text="Travel" TextColor="#F5F7F8" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="20"/>
+            <Picker x:Name="picker"
+                    Title="Оберіть місто"
+                    TitleColor="#F4CE14"
+                    TextColor="#F4CE14"
+                    SelectedIndexChanged="Picker_SelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Всі міста</x:String>
+                        <x:String>Київ</x:String>
+                        <x:String>Одеса</x:String>
+                        <x:String>Львів</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <StackLayout Orientation="Horizontal">
+                <DatePicker x:Name="fromDate" PropertyChanged="FromDate_Changed" HorizontalOptions="FillAndExpand" TextColor="#F4CE14" DateSelected="FromDate_DateSelected"/>
+                <DatePicker  x:Name="toDate" HorizontalOptions="FillAndExpand" TextColor="#F4CE14" DateSelected="ToDate_DateSelected"/>
+            </StackLayout>
+            <Entry x:Name="peopleEntry" Keyboard="Numeric" Placeholder="Кількість людей" TextColor="#F4CE14" PlaceholderColor="#F4CE14" TextChanged="PeopleEntry_TextChanged"/>
+        </StackLayout>
+
+        <ScrollView Grid.Row="1" BackgroundColor="White" Margin="0">
+            <CollectionView x:Name="suites">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal">
+                            <Image  Margin="5,10,0,0" Source="{Binding Img}"/>
+                            <StackLayout Orientation="Vertical" Margin="0,10,5,5">
+                                <Label Text="{Binding Name}"/>
+                                <Label Text="{Binding Description}"/>
+                                <Label Text="{Binding Price}" TextColor="#F4CE14" FontSize="24" FontAttributes="Bold"/>
+                                <Button Text="Відкрити" FontSize="14" Clicked="OpenSuite_Clicked" CommandParameter="{Binding ID}"></Button>
+                            </StackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>                
+            </CollectionView>
+        </ScrollView>
+    </Grid>
+    
+</ContentPage>
